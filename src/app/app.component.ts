@@ -12,8 +12,8 @@ export class AppComponent {
 
   constructor() {
     this.name = 'Alice';
-    setTimeout(() => this.updateName(), 3000);
-    setTimeout(() => this.hideChild(), 5000);
+    setTimeout(() => this.updateName(), 5000);
+    setTimeout(() => this.hideChild(), 10000);
   }
 
   updateName() {
