@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { ChildComponent } from './child/child.component';
+import { LifecycleModule } from './lifecycle/lifecycle.module';
 
 @NgModule({
-  declarations: [AppComponent, ChildComponent],
-  exports: [ChildComponent],
-  imports: [BrowserModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, LifecycleModule],
   providers: [],
   bootstrap: [AppComponent],
 })
