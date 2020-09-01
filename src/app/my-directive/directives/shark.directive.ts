@@ -1,4 +1,12 @@
-import { Directive, ElementRef, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Input,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 
 @Directive({ selector: '[appShark]' })
 
@@ -12,8 +20,13 @@ import { Directive, ElementRef, Renderer2 } from '@angular/core';
   },
 })
 */
-export class SharkDirective {
-  creature = 'Дельфин'; // Это значение получим во внешнем компоненте
+export class SharkDirective implements OnInit {
+  @Input('name1')
+  set name1(value: string) {
+    console.log(value);
+  }
+
+  public creature = 'Дельфин'; // Это значение получим во внешнем компоненте
   private text: any;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
@@ -22,59 +35,57 @@ export class SharkDirective {
     const shark = this.renderer.createText('Акула');
     renderer.appendChild(this.elementRef.nativeElement, shark);
 
-    renderer.setStyle(this.elementRef.nativeElement, 'cursor', 'pointer');
+    // renderer.setStyle(this.elementRef.nativeElement, 'cursor', 'pointer');
   }
+  ngOnInit(): void {
+    console.log(this.creature + ' SharkDirective');
+  }
+  // onMouseEnter() {
+  //   this.setFontWeight('bold');
+  // }
+  // onMouseLeave() {
+  //   this.setFontWeight('normal');
+  // }
+  // private setFontWeight(val: string) {
+  //   this.renderer.setStyle(this.elementRef.nativeElement, 'font-weight', val);
+  // }
 
-  /*
-  onMouseEnter() {
-    this.setFontWeight('bold');
-  }
-  onMouseLeave() {
-    this.setFontWeight('normal');
-  }
-  private setFontWeight(val: string) {
-    this.renderer.setStyle(this.elementRef.nativeElement, 'font-weight', val);
-  }
-  */
+  // @HostListener('mouseenter') onMouseEnter() {
+  //   this.setFontWeight('bold');
+  //   this.text = this.renderer.createText(
+  //     `Декоратор @HostListener позволяет связать событие DOM ('mouseenter'/'mouseleave') и методы директивы`
+  //   );
+  //   this.renderer.appendChild(this.elementRef.nativeElement, this.text);
+  // }
 
-  /*
-  @HostListener('mouseenter') onMouseEnter() {
-    this.setFontWeight('bold');
-    this.text = this.renderer.createText(
-      `Декоратор @HostListener позволяет связать событие DOM ('mouseenter'/'mouseleave') и методы директивы`
-    );
-    this.renderer.appendChild(this.elementRef.nativeElement, this.text);
-  }
+  // @HostListener('mouseleave') onMouseLeave() {
+  //   this.setFontWeight('normal');
+  //   this.renderer.removeChild(this.elementRef.nativeElement, this.text);
+  // }
 
-  @HostListener('mouseleave') onMouseLeave() {
-    this.setFontWeight('normal');
-    this.renderer.removeChild(this.elementRef.nativeElement, this.text);
-  }
+  // private setFontWeight(val: string) {
+  //   this.renderer.setStyle(this.elementRef.nativeElement, 'font-weight', val);
+  // }
 
-  private setFontWeight(val: string) {
-    this.renderer.setStyle(this.elementRef.nativeElement, 'font-weight', val);
-  }
-  */
+  // @HostBinding('style.cursor')
+  // get getCursor() {
+  //   return 'pointer';
+  // }
 
-  /*
-  @HostBinding('style.cursor') get getCursor() {
-    return 'pointer';
-  }
-  */
-
-  /*
   private fontWeight = 'normal';
 
-  @HostBinding('style.fontWeight') get getFontWeight() {
+  @HostBinding('style.fontWeight')
+  get getFontWeight() {
     return this.fontWeight;
   }
 
-  @HostListener('mouseenter') onMouseEnter() {
+  @HostListener('mouseenter')
+  onMouseEnter() {
     this.fontWeight = 'bold';
   }
 
-  @HostListener('mouseleave') onMouseLeave() {
+  @HostListener('mouseleave')
+  onMouseLeave() {
     this.fontWeight = 'normal';
   }
-  */
 }

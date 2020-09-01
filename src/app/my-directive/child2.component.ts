@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-child-2',
-  template: '<ng-content></ng-content>',
+  // tslint:disable-next-line:quotemark
+  template: `
+    <p>начало</p>
+    <ng-content></ng-content>
+    <p>конец</p>
+  `,
 })
 export class Child2Component {
   whoAmI() {
