@@ -1,0 +1,37 @@
+<div [class.verdanaFont]="true">
+  <h5>Односторенняя привязка данных</h5>
+  <p [class.verdanaFont]="false" [class.segoePrintFont]="true">
+    Angular 10 представляет модульную архитектуру приложения
+  </p>
+</div>
+
+<h1>
+  Директива ngClass принимает js-объект, в котором ключи - это названия классов
+</h1>
+
+<div [ngClass]="{ verdanaFont: true }">
+  <h5>Булевые значения</h5>
+  <p [ngClass]="{ segoePrintFont: true }">
+    Angular 10 представляет модульную архитектуру приложения
+  </p>
+</div>
+
+<div [ngClass]="{ verdanaFont: isVerdana }">
+  <h5>Привязка к выражениям</h5>
+  <p [ngClass]="{ segoePrintFont: isSegoe }">
+    Angular 10 представляет модульную архитектуру приложения
+  </p>
+</div>
+
+<div [ngClass]="divClasses">
+  <h5>Задание набора классов через js-объект</h5>
+  <p [ngClass]="pClasses">
+    Angular 10 представляет модульную архитектуру приложения
+  </p>
+</div>
+
+<div [ngClass]="{ invisible: visibility }">
+  <h1>Динамическое изменение стилей</h1>
+  <p>Angular 10 представляет модульную архитектуру приложения</p>
+</div>
+<button (click)="toggle()">Toggle</button>
