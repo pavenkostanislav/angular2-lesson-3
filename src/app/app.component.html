@@ -1,0 +1,10 @@
+<h5>Lifecycle Events Log</h5>
+<img *ngIf="!showChild" src="../assets/images.png" alt="альтернативный текст" />
+
+<ul>
+  <li *ngFor="let log of logs">
+    <code>{{ log }}</code>
+  </li>
+</ul>
+
+<app-child *ngIf="showChild" [title]="name" (log)="onLog($event)"></app-child>
